@@ -23,11 +23,11 @@ $n$ = Burn rate pressure exponent
 Unlike a solid motor, a liquid motor allows for the active throttling of both fuel and oxidizer. This calculator determines performance based on the specific Mixture Ratio ($O/F$) of the two liquids.
 Core Mathematics:
 The total mass flow rate is the sum of the injected liquids:
-\dot{m}_{total} = \dot{m}_o + \dot{m}_f
+$$\dot{m}_{total} = \dot{m}_o + \dot{m}_f$$
 In professional liquid engine design, thrust is often calculated using two decoupled parameters: Characteristic Velocity ($C^*$) which measures combustion chamber efficiency, and the Thrust Coefficient ($C_f$) which measures nozzle expansion efficiency.
-F = \dot{m}_{total} \cdot C^* \cdot C_f
+F = $$\dot{m}_{total} \cdot C^* \cdot C_f$$
 Characteristic velocity is dictated by the thermochemistry of the fuel/oxidizer mix:
-C^* = \frac{\sqrt{\gamma R T_c}}{\gamma \sqrt{\left(\frac{2}{\gamma + 1}\right)^{\frac{\gamma + 1}{\gamma - 1}}}}
+$$C^* = \frac{\sqrt{\gamma R T_c}}{\gamma \sqrt{\left(\frac{2}{\gamma + 1}\right)^{\frac{\gamma + 1}{\gamma - 1}}}}$$
 Where:
 $\gamma$ = Ratio of specific heats ($c_p/c_v$)
 $R$ = Specific gas constant of the exhaust
@@ -37,13 +37,13 @@ A hybrid motor utilizes a solid fuel grain and a liquid/gaseous oxidizer. Becaus
 This calculator introduces empirical "fudge factors" to bridge the gap between ideal 1D textbook math and physical reality.
 The Regression Rate Model
 The rate at which the solid fuel melts/vaporizes ($\dot{r}$) is not driven entirely by pressure (like a solid motor), but by the Oxidizer Mass Flux ($G_o$) scrubbing across the port:
-\dot{r} = a G_o^n = a \left(\frac{\dot{m}_o}{A_{port}}\right)^n
+$$\dot{r} = a G_o^n = a \left(\frac{\dot{m}_o}{A_{port}}\right)^n$$
 Where:
 $G_o$ = Oxidizer mass flow rate per unit of port area
 $A_{port}$ = Cross-sectional area of the hollow fuel core
 Introducing Non-Ideal Efficiencies
 To calculate the true thrust, the script applies correction coefficients to account for real-world losses:
-F_{true} = \eta_F \left[ \eta_c \dot{m}_{total} C^*_{ideal} C_{f(ideal)} \right]
+$$F_{true} = \eta_F \left[ \eta_c \dot{m}_{total} C^*_{ideal} C_{f(ideal)} \right]$$
 Where:
 Combustion Efficiency ($\eta_c$): Accounts for unburnt oxidizer or fuel escaping the nozzle (usually ~0.85 to 0.95 in hybrids due to poor mixing).
 Thrust Efficiency ($\eta_F$): Accounts for flow divergence losses (exhaust spraying outward instead of straight back) and boundary layer friction against the nozzle wall.
